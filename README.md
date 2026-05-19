@@ -1,17 +1,27 @@
 # chat_fake_store_api
 
-A new Flutter project.
+## Arquitectura del proyecto:
 
-## Getting Started
+````bash
+lib/
+├── core/                      # Utilidades, constantes y componentes compartidos
+│   ├── theme/                 # Temas y estilos visuales de la aplicación
+│   └── errors/                # Manejo global de excepciones y fallas (Failures)
+└── features/
+    └── chat/
+        ├── domain/            # Capa de Dominio (lógica de negocio)
+        │   ├── entities/      # Entidades del negocio (Message, Product, User)
+        │   ├── value_objects/ # Objetos de valor inmutables (ej. SenderType)
+        │   └── repositories/  # Contratos/Interfaces del Repositorio (IChatRepository)
+        │
+        ├── infrastructure/    # Capa de Infraestructura (Implementaciones tecnológicas)
+        │   ├── datasources/   # Clientes HTTP / APIs externas (FakeStoreRemoteDataSource)
+        │   ├── models/        # DTOs (Data Transfer Objects) para serialización JSON
+        │   └── repositories/  # Implementación concreta del IChatRepository
+        │
+        └── presentation/      # Capa de Presentación (UI y Control de Estado)
+            ├── state/         # Gestores de estado (Bloc / Cubit / ChangeNotifier)
+            ├── screens/       # Pantallas principales (ChatScreen)
+            └── widgets/       # Componentes visuales atómicos (ChatBubble, InputField)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
