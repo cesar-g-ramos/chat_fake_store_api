@@ -181,7 +181,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 }
 
-/// Representa una burbuja de mensaje con diseño premium adaptada al emisor.
+/// Representa una burbuja de mensaje con diseño amigable adaptada al emisor.
 class _MessageBubble extends StatelessWidget {
   final Message message;
 
